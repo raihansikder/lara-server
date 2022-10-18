@@ -1,4 +1,6 @@
 ### Install Packages:
+
+https://www.prowebtips.com/how-to-upgrade-latest-php-8-1-from-php-8-0/
 ```bash
 apt-get install software-properties-common
 apt-key adv --recv-keys --keyserver hkp://keyserver.ubuntu.com:80 0xF1656F24C74CD1D8
@@ -7,7 +9,13 @@ add-apt-repository -y 'ppa:ondrej/php'
 add-apt-repository -y 'ppa:ondrej/nginx'
 add-apt-repository -y ppa:certbot/certbot
 apt-get update
-apt-get -y install gcc curl gzip sqlite3 git tar software-properties-common nginx php8.1-fpm php8.1-xml php8.1-bz2  php8.1-zip php8.1-mysql php8.1-intl php8.1-bcmath php8.1-gd php8.1-curl php8.1-soap php8.1-mbstring python-certbot-nginx composer mariadb-server
+apt-get -y install gcc curl gzip sqlite3 git tar software-properties-common nginx php8.1-fpm php8.1-common php8.1-cli php8.1-xml php8.1-bz2  php8.1-zip php8.1-mysql php8.1-intl php8.1-bcmath php8.1-gd php8.1-curl php8.1-soap php8.1-mbstring python-certbot-nginx composer mariadb-server
+
+# Short hand
+sudo apt install php8.1-{imagick,bz2,curl,intl,mysql,readline,xml,fpm,mbstring,zip,bcmath}
+
+sudo a2dismod php8.0
+sudo a2enmod php8.1
 #
 ```
 ## Optional Package for Image Optimization
