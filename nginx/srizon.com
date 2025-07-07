@@ -1,12 +1,16 @@
 server {
     listen 80;
+    listen [::]:80;
+    server_name srizon.com   www.srizon.com;
+    root /var/www/srizon.com/public;
+
     #load balancer forwarded https
     #if ($http_x_forwarded_proto != 'https') {
     #    return 301 https://$host$request_uri;
     #}
-    root /var/www/srizon.com/public;
+
     index index.php index.html index.htm;
-    server_name srizon.com   www.srizon.com;
+
     charset   utf-8;
     client_max_body_size 120M;
     gzip on;
@@ -27,27 +31,33 @@ server {
         application/json
         application/xml
         application/xml+rss;
+
     #static single page app on /app directory
     #location /app {
     #    try_files $uri $uri/ /app/index.html?$args;
     #}
+
     location / {
         try_files $uri $uri/ /index.php?$args;
     }
+
     location ~ \.php$ {
         include snippets/fastcgi-php.conf;
         fastcgi_pass unix:/run/php/php8.4-fpm.sock;
     }
+
     location ~* \.(?:jpg|jpeg|gif|png|ico|cur|gz|svg|svgz|mp4|ogg|ogv|webm|htc|svg|woff|woff2|ttf)\$ {
         expires 1M;
         access_log off;
         add_header Cache-Control "public";
     }
+
     location ~* \.(?:css|js)\$ {
         expires 7d;
         access_log off;
         add_header Cache-Control "public";
     }
+
     location ~ /\.ht {
         deny  all;
     }
