@@ -1,6 +1,7 @@
 ### Install Packages:
 
 https://www.prowebtips.com/how-to-upgrade-latest-php-8-1-from-php-8-0/
+
 ```bash
 apt-get install software-properties-common
 apt-key adv --recv-keys --keyserver hkp://keyserver.ubuntu.com:80 0xF1656F24C74CD1D8
@@ -18,12 +19,17 @@ sudo a2dismod php8.0
 sudo a2enmod php8.4
 #
 ```
+
 ## Optional Package for Image Optimization
+
 These are used by *Laravel Media Library* package. So if you're using that, install these.
+
 ```bash
 apt-get -y install jpegoptim optipng pngquant gifsicle
 ```
+
 ### Configure PHP
+
 ```bash
 sed -i 's/upload_max_filesize = 2M/upload_max_filesize = 100M/g' /etc/php/8.4/fpm/php.ini
 sed -i 's/max_execution_time = 30/max_execution_time = 600/g' /etc/php/8.4/fpm/php.ini
@@ -33,18 +39,25 @@ sed -i 's/memory_limit = 128M/memory_limit = 512M/g' /etc/php/8.4/fpm/php.ini
 service php8.4-fpm restart
 #
 ```
+
 ### Clone git repo
+
+Clone the script and checkout to the desired PHP version branch.
+
 ```bash
 git clone https://github.com/raihansikder/lara-server.git
+git checkout php8.4
 ```
 
 ### Create a site: Enter domain
+
 ```bash
 cd lara-server
 echo 'Enter Site Domain [site.com]:' && read site_com
 ```
 
 ...And Change config
+
 ```bash
 cp nginx/srizon.com /etc/nginx/sites-available/$site_com
 sed -i "s/srizon.com/${site_com}/g" /etc/nginx/sites-available/$site_com
@@ -56,23 +69,25 @@ service nginx reload
 ```
 
 ### Edit to test out
+
 ```bash
 nano /var/www/$site_com/public/index.php
 ```
 
 ### Clear document root
+
 ```bash
 rm -rf /var/www/$site_com/public
 ```
+
 ### Move to document root to clone laravel project
+
 ```bash
 cd /var/www/$site_com
 ```
 
-
-
 Now clone your project. Create database and connect on .env
-Use clone with '.' so that codes are cloned into the site folder without creating a project 
+Use clone with '.' so that codes are cloned into the site folder without creating a project
 folder inside it
 
 ```
@@ -80,6 +95,7 @@ $ git clone origin-url .
 ```
 
 ### Creating database
+
 `replace dbname, username and password before copy-pasting`
 
 ```bash
@@ -88,7 +104,9 @@ CREATE DATABASE dbname;
 GRANT ALL ON dbname.* TO username@localhost IDENTIFIED BY 'password';
 exit;
 ```
+
 ### https
+
 ```bash
 certbot --nginx
 ```
