@@ -69,7 +69,15 @@ rm -rf /var/www/$site_com/public
 cd /var/www/$site_com
 ```
 
+
+
 Now clone your project. Create database and connect on .env
+Use clone with '.' so that codes are cloned into the site folder without creating a project 
+folder inside it
+
+```
+$ git clone origin-url .
+```
 
 ### Creating database
 `replace dbname, username and password before copy-pasting`
