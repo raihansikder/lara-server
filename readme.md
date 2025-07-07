@@ -67,7 +67,7 @@ mkdir /var/www/$site_com
 mkdir /var/www/$site_com/public
 touch /var/www/$site_com/public/index.php
 ln -s /etc/nginx/sites-available/$site_com /etc/nginx/sites-enabled/$site_com
-service nginx reload
+sudo service nginx reload
 ```
 
 ### Edit to test out
