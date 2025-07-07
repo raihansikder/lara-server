@@ -43,8 +43,10 @@ service php8.4-fpm restart
 ### Clone git repo
 
 Clone the script and checkout to the desired PHP version branch.
+Clone the script in your webserver directory for easy use
 
 ```bash
+cd /var/www
 git clone https://github.com/raihansikder/lara-server.git
 git checkout php8.4
 ```
