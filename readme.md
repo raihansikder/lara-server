@@ -9,13 +9,13 @@ add-apt-repository -y 'ppa:ondrej/php'
 add-apt-repository -y 'ppa:ondrej/nginx'
 add-apt-repository -y ppa:certbot/certbot
 apt-get update
-apt-get -y install gcc curl gzip sqlite3 git tar software-properties-common nginx php8.1-fpm php8.1-common php8.1-cli php8.1-xml php8.1-bz2  php8.1-zip php8.1-mysql php8.1-intl php8.1-bcmath php8.1-gd php8.1-curl php8.1-soap php8.1-mbstring python-certbot-nginx composer mariadb-server
+apt-get -y install gcc curl gzip sqlite3 git tar software-properties-common nginx php8.2-fpm php8.2-common php8.2-cli php8.2-xml php8.2-bz2  php8.2-zip php8.2-mysql php8.2-intl php8.2-bcmath php8.2-gd php8.2-curl php8.2-soap php8.2-mbstring python-certbot-nginx composer mariadb-server
 
 # Short hand
-sudo apt install php8.1-{imagick,bz2,curl,intl,mysql,readline,xml,fpm,mbstring,zip,bcmath}
+sudo apt install php8.2-{imagick,bz2,curl,intl,mysql,readline,xml,fpm,mbstring,zip,bcmath}
 
 sudo a2dismod php8.0
-sudo a2enmod php8.1
+sudo a2enmod php8.2
 #
 ```
 ## Optional Package for Image Optimization
@@ -25,12 +25,12 @@ apt-get -y install jpegoptim optipng pngquant gifsicle
 ```
 ### Configure PHP
 ```bash
-sed -i 's/upload_max_filesize = 2M/upload_max_filesize = 100M/g' /etc/php/8.1/fpm/php.ini
-sed -i 's/max_execution_time = 30/max_execution_time = 600/g' /etc/php/8.1/fpm/php.ini
-sed -i 's/max_input_time = 60/max_input_time = 600/g' /etc/php/8.1/fpm/php.ini
-sed -i 's/post_max_size = 8M/post_max_size = 120M/g' /etc/php/8.1/fpm/php.ini
-sed -i 's/memory_limit = 128M/memory_limit = 512M/g' /etc/php/8.1/fpm/php.ini
-service php8.1-fpm restart
+sed -i 's/upload_max_filesize = 2M/upload_max_filesize = 100M/g' /etc/php/8.2/fpm/php.ini
+sed -i 's/max_execution_time = 30/max_execution_time = 600/g' /etc/php/8.2/fpm/php.ini
+sed -i 's/max_input_time = 60/max_input_time = 600/g' /etc/php/8.2/fpm/php.ini
+sed -i 's/post_max_size = 8M/post_max_size = 120M/g' /etc/php/8.2/fpm/php.ini
+sed -i 's/memory_limit = 128M/memory_limit = 512M/g' /etc/php/8.2/fpm/php.ini
+service php8.2-fpm restart
 #
 ```
 ### Clone git repo
