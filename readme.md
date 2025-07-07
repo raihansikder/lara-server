@@ -35,7 +35,7 @@ service php8.4-fpm restart
 ```
 ### Clone git repo
 ```bash
-git clone https://github.com/AfzalH/lara-server.git
+git clone https://github.com/raihansikder/lara-server.git
 ```
 
 ### Create a site: Enter domain
